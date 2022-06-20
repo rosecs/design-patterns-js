@@ -43,6 +43,7 @@ class SUV extends Car {
 */
 
 // Factory Pattern
+/*
 class Car {
     constructor(doors, engine, color) {
         this.doors;
@@ -71,3 +72,57 @@ const myHonda = factory.createCar('honda');
 //console.log(civc);
 //console.log(honda);
 console.log(myHonda);
+*/
+
+//Abstract factory pattern
+class Car {
+    constructor(doors, engine, color) {
+        this.doors;
+        this.engine;
+        this.color;
+    }
+}
+class carFactory {
+    createCar(type) {
+        switch (type) {
+            case 'civic':
+                return new Car(4, 'V8', 'red')
+            case 'honda' :
+                return new Car(4, 'V6', 'blblue')
+        }
+    }
+}
+class SUV {
+    constructor(doors, engine, color) {
+        this.doors;
+        this.engine;
+        this.color;
+    }
+}
+
+class SUVFactory {
+    createCar(type) {
+        switch (type) {
+            case 'civic':
+                return new Car(4, 'V8', 'red')
+            case 'honda' :
+                return new Car(4, 'V6', 'blblue')
+        }
+    }
+}
+
+const carfactory = new carFactory();
+const suvFactory = new SUVFactory();
+
+const autoManufacturer = (type, model) => {
+    switch (type) {
+        case 'car':
+            return carFcatory.createCar(model);
+        case 'suv':
+            return SUVFactory.createCar(model);
+    }
+}
+
+const cx5 = autoManufacturer('suv', cx5);
+
+console.log(cx5);
